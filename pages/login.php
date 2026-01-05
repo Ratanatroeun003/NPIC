@@ -1,8 +1,3 @@
-<?php
-include '../includes/header.inc.php';
-include '../includes/navbar.inc.php';
-?>
-
 <form class="col-lg-6 col-xs-8 col-md-8 mx-auto p-2">
     <h3>Login</h3>
     <div class="mb-3">
@@ -19,7 +14,3 @@ include '../includes/navbar.inc.php';
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
-
-    <?php
-    include '../includes/footer.inc.php';
-    ?>

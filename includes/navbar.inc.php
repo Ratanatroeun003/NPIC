@@ -17,8 +17,8 @@
                         Auth
                     </a>
                     <ul class="dropdown-menu bg-info">
-                        <li><a class="dropdown-item text-center" href="/php_npic/pages/login.php">Login</a></li>
-                        <li><a class="dropdown-item text-center" href="/php_npic/pages/register.php">Register</a></li>
+                        <li><a class="dropdown-item text-center" href="/php_npic/?page=login">Login</a></li>
+                        <li><a class="dropdown-item text-center" href="/php_npic/?page=register">Register</a></li>
 
 
                     </ul>
