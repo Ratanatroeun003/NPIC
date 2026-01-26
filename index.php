@@ -1,5 +1,6 @@
 
 <?php
+require_once './init/init.php';
 include 'includes/header.inc.php';
 include 'includes/navbar.inc.php';
 $available_page = ['login', 'register'];
@@ -9,9 +10,9 @@ if (isset($_GET['page'])) {
     if (in_array($page, $available_page)) {
         include 'pages/' . $page . '.php';
     } else {
-        echo '<h1>Page not found(404)</h1/';
+        include './pages/error404.php';
     }
 } else {
-    echo '<h1>Page not found(404)</h1/';
+    include './pages/dashboard.php';
 }
 include 'includes/footer.inc.php';
