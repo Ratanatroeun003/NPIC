@@ -26,3 +26,15 @@ function registerUser($name, $username, $passwd)
 
     return false;
 }
+function logUserIn($username, $passwd)
+{
+    global $db;
+    $query = $db->prepare('select * from tbl_user where username = ? and password= ?');
+    $query->bind_param('ss', $username, $passwd);
+    $query->execute();
+    $result = $query->get_result();
+    if ($result->num_rows > 0) {
+        return $result->fetch_object();
+    }
+    return false;
+}
