@@ -17,8 +17,12 @@
                         Auth
                     </a>
                     <ul class="dropdown-menu bg-info">
-                        <li><a class="dropdown-item text-center" href="/php_npic/?page=login">Login</a></li>
-                        <li><a class="dropdown-item text-center" href="/php_npic/?page=register">Register</a></li>
+                        <?php if (empty($user)) { ?>
+                            <li><a class="dropdown-item text-center" href="/php_npic/?page=login">Login</a></li>
+                            <li><a class="dropdown-item text-center" href="/php_npic/?page=register">Register</a></li>
+                        <?php } else { ?>
+                            <li><a class="dropdown-item text-center" href="/php_npic/?page=logout">logout</a></li>
+                        <?php } ?>
 
 
                     </ul>

@@ -38,3 +38,23 @@ function logUserIn($username, $passwd)
     }
     return false;
 }
+function loggedInuUser()
+{
+    global $db;
+
+    if (!isset($_SESSION['user_id'])) {
+        return null;
+    }
+
+    $user_id = $_SESSION['user_id'];
+
+    $query = $db->prepare('SELECT * FROM tbl_user WHERE id = ?');
+    $query->bind_param('i', $user_id);
+    $query->execute();
+
+    $result = $query->get_result();
+    if ($result->num_rows > 0) {
+        return $result->fetch_object();
+    }
+    return null;
+}
