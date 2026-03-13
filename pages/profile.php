@@ -15,28 +15,47 @@ if (isset($_POST['changePasswd'], $_POST['oldPasswd'], $_POST['newPasswd'], $_PO
     if ($newPasswd !== $confirmNewPasswd) {
         $newPasswdErr = 'password does not match';
     }
-     if (!isUserHasPassword($oldPasswd)) {
+    if (!isUserHasPassword($oldPasswd)) {
         $oldPasswdErr = 'password is incorrect';
     }
     if (empty($oldPasswdErr) && empty($newPasswdErr)) {
-        if (setUserNewPassowrd($newPasswd)) {
+        if (setUserNewPassword($newPasswd)) {
             header('Location: ./?page=logout');
         } else {
             echo '<div class="alert alert-danger" role="alert">
-                try aggain.
+                try again.
                 </div>';
         }
     }
+}
+if (isset($_POST['uploadPhoto']) && isset($_FILES['photo'])) {
+    $photo = $_FILES['photo'];
+    if (empty($photo['name'])) {
+        echo '<div class="alert alert-danger" role="alert">Please select a photo to upload</div>';
+    } else {
+        try {
+            if (changeProfileImage($photo)) {
+                echo '<div class="alert alert-success" role="alert">profile image change successfully</div>';
+            } else {
+                echo '<div class:"alert alert-danger" role="alert">fail to change image</div>';
+            }
+        } catch (Exception $e) {
+            echo '<div class="alert alert-danger" role="alert">' . $e->getMessage() . '</div>';
+        }
+    }
+}
+if (isset($_POST['deletePhoto'])) {
+    deleteProfileImage();
 }
 ?>
 
 <div class="row">
     <div class="col-6">
-        <form method="post" action="./?page=profile">
+        <form method="post" action="./?page=profile" enctype="multipart/form-data">
             <div class="d-flex justify-content-center">
                 <input name="photo" type="file" id="profileUpload" hidden>
                 <label role="button" for="profileUpload">
-                    <img src="./assets/images/emptyuser.png" class="rounded">
+                    <img src="<?php echo loggedInUser()->photo ?? './assets/images/emptyuser.png' ?>" class="rounded img-thumbnail" style="max-width: 200px;">
                 </label>
             </div>
             <div class="d-flex justify-content-center">
