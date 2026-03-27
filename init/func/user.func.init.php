@@ -24,3 +24,11 @@ function getUsers()
     $result = $query->get_result();
     return $result;
 }
+// function deleteUser($id)
+// {
+//     global $db;
+//     $targetUser = readUser($id);
+//     if ($targetUser->photo) {
+//         unlink($targetUser->photo);
+//     }
+// }
