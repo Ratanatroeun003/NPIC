@@ -1,9 +1,9 @@
 <div class="container">
+    <div class="d-flex justify-content-between">
+        <h3>User List</h3>
+        <a href="./?page=user/create" class="btn btn-success">Create New</a>
+    </div>
     <div class="table-responsive">
-        <div class="d-flex justify-content-between">
-            <h3>User List</h3>
-            <a href="./?page=user/create" class="btn btn-success">Create New</a>
-        </div>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -25,8 +25,8 @@
                         <td><img src="<?php echo $row->photo ?? './assets/images/emptyuser.png' ?>" alt=""></td>
                         <td><?php echo $row->name ?></td>
                         <td>
-                            <button class="btn btn-success">Update <i class="bi bi-pencil-fill"></i></button>
-                            <button class="btn btn-danger btn-delete">Delete <i class="bi bi-trash3-fill"></i></button>
+                            <a href="./?page=user/update&id=<?php echo $row->id ?>" class="btn btn-success">Update <i class="bi bi-pencil-fill"></i></a>
+                            <a href="./?page=user/delete&id=<?php echo $row->id ?>" class="btn btn-danger btn-delete">Delete <i class="bi bi-trash3-fill"></i></a>
                         </td>
                     </tr>
                 <?php
